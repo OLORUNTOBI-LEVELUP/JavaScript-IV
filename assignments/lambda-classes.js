@@ -11,7 +11,6 @@ class person {
   }
 }
 
-
 class Instructor extends person {
   constructor(personChild) {
     super(personChild);
@@ -25,9 +24,10 @@ class Instructor extends person {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  addAndSubtract(student) {
+    return student.grade + Math.floor(Math.random() * 15 + 1);
+  }
 }
-
-
 
 class student extends person {
   constructor(anotherChild) {
@@ -35,6 +35,7 @@ class student extends person {
     this.previousBackground = anotherChild.previousBackground;
     this.className = anotherChild.className;
     this.favSubjects = anotherChild.favSubjects;
+    this.grade = anotherChild.grade;
   }
   listSubjects() {
     return `${this.favSubjects}`;
@@ -45,9 +46,16 @@ class student extends person {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+  graduate() {
+    if (this.grade >= 70) {
+      return `Congratulations ${this.name}, you have graduated from Lambda!`;
+    } else {
+      return `Sorry ${this.name}, you need 70 to pass. You are currently on ${
+        this.grade
+      } Keep working!`;
+    }
+  }
 }
-
-
 
 class ProjectManagers extends Instructor {
   constructor(InstructorChild) {
@@ -59,11 +67,9 @@ class ProjectManagers extends Instructor {
     return `${this.name} announces to ${channel}, @channel standy times!​​​​​`;
   }
   debugsCode(student, subject) {
-    console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
-
-
 
 const tobi = new person({
   name: "tobi",
@@ -88,6 +94,7 @@ const tolu = new student({
   age: 13,
   gender: "female",
   favLanguage: "python",
+  grade: 50,
   specialty: "back-end",
   catchPhrase: `Don't forget the girls`,
   previousBackground: "Finance",
@@ -107,4 +114,5 @@ const maxime = new ProjectManagers({
   favInstructor: "gabe"
 });
 
-console.log(tolu.PRAssignment("maths"));
+console.log(tolu.graduate());
+console.log(maxime.debugsCode(tolu, "maths"));
