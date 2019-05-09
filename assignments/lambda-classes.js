@@ -25,7 +25,7 @@ class Instructor extends person {
     return `${student.name} receives a perfect score on ${subject}`;
   }
   addAndSubtract(student) {
-    return student.grade + Math.floor(Math.random() * 15 + 1);
+    return student.grade + Math.floor(Math.random() * 50);
   }
 }
 
@@ -108,11 +108,11 @@ const maxime = new ProjectManagers({
   age: 27,
   gender: "male",
   favLanguage: "JavaScript",
-  specialty: "Front-end/back-end",
+  specialty: "Front-end/back-end",   
   catchPhrase: `You'll never walk alone`,
   gradClassName: "cs12",
   favInstructor: "gabe"
 });
 
-console.log(tolu.graduate());
+console.log(fred.addAndSubtract(tolu));
 console.log(maxime.debugsCode(tolu, "maths"));
